@@ -1,12 +1,15 @@
 
 package com.networknt.Organization.model;
+import java.util.Map;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Organization {
 
     
-    private String name;
+  
+
+	private String name;
     
     private String id;
     
@@ -19,8 +22,22 @@ public class Organization {
 
     public Organization () {
     }
-
-    
+    public Organization( String id,String name, String contactPhone, String contactEmail, String contactName) {
+  		super();
+  		this.name = name;
+  		this.id = id;
+  		this.contactPhone = contactPhone;
+  		this.contactEmail = contactEmail;
+  		this.contactName = contactName;
+  	}
+    public Organization(Map<String, Object> map) {
+		super();
+		setId((String) map.get("id"));
+		setName( (String) map.get("Name"));
+		setContactEmail((String) map.get("contactEmail"));
+		setContactName ((String) map.get("contactName"));
+		setContactPhone ((String) map.get("contactPhone"));
+	}
     
     @JsonProperty("name")
     public String getName() {

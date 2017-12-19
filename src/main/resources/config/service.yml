@@ -2,6 +2,8 @@
 # Singleton service factory configuration/IoC injection
 singletons:
 # OpenAPI parser validator implementation
+- com.networknt.Organization.Service.OrganizationService:
+  - com.networknt.Organization.Service.OrganizationServiceImpl  
 - com.networknt.oas.validator.Validator<com.networknt.oas.model.Callback>:
   - com.networknt.oas.validator.impl.CallbackValidator
 - com.networknt.oas.validator.Validator<com.networknt.oas.model.Contact>:
@@ -83,3 +85,16 @@ singletons:
   # Validator Validate request based on OpenAPI 3.0 specification (depending on OpenApiHandler and BodyHandler)
   - com.networknt.openapi.ValidatorHandler
 
+- javax.sql.DataSource:
+  - com.zaxxer.hikari.HikariDataSource:
+      DriverClassName: org.h2.Driver
+      jdbcUrl: jdbc:h2:~/Organization_services2;DB_CLOSE_DELAY=-1;INIT=runscript from 'src/main/resources/config/db.sql'
+      username: sa
+      password: 
+      maximumPoolSize: 10
+      useServerPrepStmts: true,
+      cachePrepStmts: true,
+      cacheCallableStmts: true,
+      prepStmtCacheSize: 10,
+      prepStmtCacheSqlLimit: 2048,
+      connectionTimeout: 2000

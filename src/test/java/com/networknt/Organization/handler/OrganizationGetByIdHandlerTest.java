@@ -24,11 +24,11 @@ import java.util.concurrent.atomic.AtomicReference;
 import java.io.IOException;
 
 
-public class OrganizationOrganizationIdGetHandlerTest {
+public class OrganizationGetByIdHandlerTest {
     @ClassRule
     public static TestServer server = TestServer.getInstance();
 
-    static final Logger logger = LoggerFactory.getLogger(OrganizationOrganizationIdGetHandlerTest.class);
+    static final Logger logger = LoggerFactory.getLogger(OrganizationGetByIdHandlerTest.class);
     static final boolean enableHttp2 = server.getServerConfig().isEnableHttp2();
     static final boolean enableHttps = server.getServerConfig().isEnableHttps();
     static final int httpPort = server.getServerConfig().getHttpPort();

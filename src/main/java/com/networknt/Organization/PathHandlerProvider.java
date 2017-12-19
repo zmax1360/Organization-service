@@ -24,11 +24,11 @@ public class PathHandlerProvider implements HandlerProvider {
         
             .add(Methods.GET, "/v1/server/info", new ServerInfoGetHandler())
         
-            .add(Methods.GET, "/v1/organization/{organizationId}", new OrganizationOrganizationIdGetHandler())
+            .add(Methods.GET, "/v1/organizations/{id}", new OrganizationGetByIdHandler())
         
-            .add(Methods.DELETE, "/v1/organization/{organizationId}", new OrganizationOrganizationIdDeleteHandler())
+            .add(Methods.DELETE, "/v1/organizations/{id}", new OrganizationDeleteByIdHandler())
         
-            .add(Methods.PUT, "/v1/organization/{organizationId}", new OrganizationOrganizationIdPutHandler())
+            .add(Methods.PUT, "/v1/organizations/{id}", new OrganizationPutByIdHandler())
         
         ;
     }

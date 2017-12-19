@@ -24,11 +24,11 @@ import java.util.concurrent.atomic.AtomicReference;
 import java.io.IOException;
 
 
-public class OrganizationOrganizationIdPutHandlerTest {
+public class OrganizationDeleteByIdHandlerTest {
     @ClassRule
     public static TestServer server = TestServer.getInstance();
 
-    static final Logger logger = LoggerFactory.getLogger(OrganizationOrganizationIdPutHandlerTest.class);
+    static final Logger logger = LoggerFactory.getLogger(OrganizationDeleteByIdHandlerTest.class);
     static final boolean enableHttp2 = server.getServerConfig().isEnableHttp2();
     static final boolean enableHttps = server.getServerConfig().isEnableHttps();
     static final int httpPort = server.getServerConfig().getHttpPort();
@@ -36,7 +36,7 @@ public class OrganizationOrganizationIdPutHandlerTest {
     static final String url = enableHttp2 || enableHttps ? "https://localhost:" + httpsPort : "http://localhost:" + httpPort;
 
     @Test
-    public void testOrganizationOrganizationIdPutHandlerTest() throws ClientException, ApiException {
+    public void testOrganizationOrganizationIdDeleteHandlerTest() throws ClientException, ApiException {
         /*
         final Http2Client client = Http2Client.getInstance();
         final CountDownLatch latch = new CountDownLatch(1);
@@ -48,11 +48,9 @@ public class OrganizationOrganizationIdPutHandlerTest {
         }
         final AtomicReference<ClientResponse> reference = new AtomicReference<>();
         try {
-            ClientRequest request = new ClientRequest().setPath("/v1/organization/organizationId").setMethod(Methods.PUT);
+            ClientRequest request = new ClientRequest().setPath("/v1/organization/organizationId").setMethod(Methods.DELETE);
             
-            request.getRequestHeaders().put(Headers.CONTENT_TYPE, "application/json");
-            request.getRequestHeaders().put(Headers.TRANSFER_ENCODING, "chunked");
-            connection.sendRequest(request, client.createClientCallback(reference, latch, "request body to be replaced"));
+            connection.sendRequest(request, client.createClientCallback(reference, latch));
             
             latch.await();
         } catch (Exception e) {

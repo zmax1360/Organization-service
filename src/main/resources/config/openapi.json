@@ -1,9 +1,9 @@
 {"components":{"securitySchemes":{"licensestore_auth":{"type": "oauth2","description": "This API uses OAuth 2 with the client credential grant flow.","flows":{"clientCredentials":{"tokenUrl": "https://localhost:6882/token","scopes":{"read:licenses": "read your licenses","server.info.r":"read server info","write:licenses": "modify licenses in your account"}}}}},"schemas":{"Error":{"required":["code",
           "message"],"properties":{"message":{"type": "string"},"code":{"type": "integer","format": "int32"}}},"organization":{"required":["id",
           "name",
-          "contact_name",
-          "contact_email",
-          "contact_phone"],"properties":{"name":{"type": "string"},"id":{"type": "string"},"contactPhone":{"type": "string"},"contactEmail":{"type": "string"},"contactName":{"type": "string"}}}}},"servers": [
+          "contactName",
+          "contactEmail",
+          "contactPhone"],"properties":{"name":{"type": "string"},"id":{"type": "string"},"contactPhone":{"type": "string"},"contactEmail":{"type": "string"},"contactName":{"type": "string"}}}}},"servers": [
     {
       "url": "http://OrganizationService.swagger.io/v1"
     }
@@ -108,7 +108,7 @@
           }
         }
       }
-    },"/organization/{organizationId}": {
+    },"/organizations/{organizationId}": {
       "get": {
         "summary": "Info for a specific organization",
         "operationId": "showlicenseById",
