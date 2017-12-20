@@ -261,7 +261,9 @@
           }
         }
       }
-    },"/health":{"get":{"responses":{"200":{"description":"successful operation"}},"parameters":[]}},"/server/info":{"get":{"security":[{"licensestore_auth":["server.info.r"]}],"responses":{"200":{"description":"successful operation"}},"parameters":[]}}},"info": {
+    },"/health":{"get":{"responses":{"200":{"description":"successful operation"}},"parameters":[]}}
+    ,"/licenses":{"get":{"responses":{"200":{"description":"successful operation"}},"parameters":[]}}
+    ,"/server/info":{"get":{"security":[{"licensestore_auth":["server.info.r"]}],"responses":{"200":{"description":"successful operation"}},"parameters":[]}}},"info": {
     "version": "1.0.0",
     "title": "Swagger OrganizationService",
     "license": {

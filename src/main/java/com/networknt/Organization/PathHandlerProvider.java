@@ -29,6 +29,8 @@ public class PathHandlerProvider implements HandlerProvider {
             .add(Methods.DELETE, "/v1/organizations/{id}", new OrganizationDeleteByIdHandler())
         
             .add(Methods.PUT, "/v1/organizations/{id}", new OrganizationPutByIdHandler())
+            
+            .add(Methods.PUT, "/v1/licenses", new LicensesGetHandler())
         
         ;
     }
