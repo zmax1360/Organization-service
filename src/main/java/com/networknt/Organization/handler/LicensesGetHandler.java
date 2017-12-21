@@ -12,12 +12,13 @@ import org.slf4j.LoggerFactory;
 import org.xnio.OptionMap;
 
 import com.fasterxml.jackson.core.type.TypeReference;
-import com.networknt.body.BodyHandler;
+import com.networknt.Organization.model.License;
 import com.networknt.client.Http2Client;
 import com.networknt.cluster.Cluster;
 import com.networknt.config.Config;
 import com.networknt.exception.ClientException;
 import com.networknt.security.JwtHelper;
+import com.networknt.server.Server;
 import com.networknt.service.SingletonServiceFactory;
 
 import io.undertow.UndertowOptions;
@@ -28,7 +29,6 @@ import io.undertow.server.HttpHandler;
 import io.undertow.server.HttpServerExchange;
 import io.undertow.util.HttpString;
 import io.undertow.util.Methods;
-import com.networknt.server.Server;
 
 public class LicensesGetHandler implements HttpHandler {
 
@@ -38,7 +38,7 @@ public class LicensesGetHandler implements HttpHandler {
 	static String apilicensesPath = (String) Config.getInstance().getJsonMapConfig(CONFIG_NAME)
 			.get("api_licenses_path");
 	static Cluster cluster = SingletonServiceFactory.getBean(Cluster.class);
-	static Map<String, Object> securityConfig = (Map) Config.getInstance().getJsonMapConfig(JwtHelper.SECURITY_CONFIG);
+	static Map<String, Object> securityConfig = (Map<String, Object>) Config.getInstance().getJsonMapConfig(JwtHelper.SECURITY_CONFIG);
 	static boolean securityEnabled = (Boolean) securityConfig.get(JwtHelper.ENABLE_VERIFY_JWT);
 	static Http2Client client = Http2Client.getInstance();
 	static String tag = Server.config.getEnvironment();
@@ -78,17 +78,18 @@ public class LicensesGetHandler implements HttpHandler {
             if(statusCodelicenses >= 300){
                 throw new Exception("Failed to call API B: " + statusCodelicenses);
             }
-     
-           System.out.println();
-          /*  System.out.println(apibList);
-            list.addAll(apibList);*/
+            List<String> apibList = Config.getInstance().getMapper().readValue(referencelicenses.get().getAttachment(Http2Client.RESPONSE_BODY),
+                    new TypeReference<List<License>>(){});
+        
+            list.addAll(apibList);
 
           
         } catch (Exception e) {
             logger.error("Exception:", e);
             throw new ClientException(e);
         }
-        exchange.getResponseSender().send(Config.getInstance().getMapper().writeValueAsString(referencelicenses.get().getAttachment(Http2Client.RESPONSE_BODY)));
+    	exchange.getResponseHeaders().add(new HttpString("Content-Type"), "application/json");
+        exchange.getResponseSender().send(Config.getInstance().getMapper().writeValueAsString(list));
     
 
 	}

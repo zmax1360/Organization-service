@@ -5,8 +5,8 @@
 	<classpathentry including="**/*.java" kind="src" path="src/main/java"/>
 	<classpathentry excluding="**/*.java" kind="src" path="src/main/resources"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
-	<classpathentry kind="var" path="M2_REPO/com/networknt/config/1.5.4/config-1.5.4.jar"/>
-	<classpathentry kind="var" path="M2_REPO/com/fasterxml/jackson/core/jackson-databind/2.9.1/jackson-databind-2.9.1.jar"/>
+	<classpathentry kind="var" path="M2_REPO/com/networknt/config/1.5.4/config-1.5.4.jar" sourcepath="SOURCE_ATTACHER/config-1.5.4-sources.jar"/>
+	<classpathentry kind="var" path="M2_REPO/com/fasterxml/jackson/core/jackson-databind/2.9.1/jackson-databind-2.9.1.jar" sourcepath="SOURCE_ATTACHER/jackson-databind-2.9.1-sources.jar"/>
 	<classpathentry kind="var" path="M2_REPO/com/fasterxml/jackson/core/jackson-annotations/2.9.0/jackson-annotations-2.9.0.jar"/>
 	<classpathentry kind="var" path="M2_REPO/com/fasterxml/jackson/core/jackson-core/2.9.1/jackson-core-2.9.1.jar"/>
 	<classpathentry kind="var" path="M2_REPO/com/fasterxml/jackson/datatype/jackson-datatype-jsr310/2.9.1/jackson-datatype-jsr310-2.9.1.jar"/>
@@ -14,7 +14,7 @@
 	<classpathentry kind="var" path="M2_REPO/org/owasp/encoder/encoder/1.2.1/encoder-1.2.1.jar"/>
 	<classpathentry kind="var" path="M2_REPO/org/yaml/snakeyaml/1.18/snakeyaml-1.18.jar"/>
 	<classpathentry kind="var" path="M2_REPO/com/networknt/utility/1.5.4/utility-1.5.4.jar"/>
-	<classpathentry kind="var" path="M2_REPO/io/undertow/undertow-core/1.4.20.Final/undertow-core-1.4.20.Final.jar"/>
+	<classpathentry kind="var" path="M2_REPO/io/undertow/undertow-core/1.4.20.Final/undertow-core-1.4.20.Final.jar" sourcepath="SOURCE_ATTACHER/undertow-core-1.4.20.Final-sources-1513340620063.jar"/>
 	<classpathentry kind="var" path="M2_REPO/org/jboss/logging/jboss-logging/3.2.1.Final/jboss-logging-3.2.1.Final.jar"/>
 	<classpathentry kind="var" path="M2_REPO/org/jboss/xnio/xnio-api/3.3.8.Final/xnio-api-3.3.8.Final.jar"/>
 	<classpathentry kind="var" path="M2_REPO/org/jboss/xnio/xnio-nio/3.3.8.Final/xnio-nio-3.3.8.Final.jar"/>
@@ -23,7 +23,7 @@
 	<classpathentry kind="var" path="M2_REPO/com/networknt/handler/1.5.4/handler-1.5.4.jar"/>
 	<classpathentry kind="var" path="M2_REPO/com/networknt/status/1.5.4/status-1.5.4.jar"/>
 	<classpathentry kind="var" path="M2_REPO/com/networknt/service/1.5.4/service-1.5.4.jar"/>
-	<classpathentry kind="var" path="M2_REPO/com/networknt/exception/1.5.4/exception-1.5.4.jar" sourcepath="SOURCE_ATTACHER/exception-1.5.4-sources.jar"/>
+	<classpathentry kind="var" path="M2_REPO/com/networknt/exception/1.5.4/exception-1.5.4.jar" sourcepath="SOURCE_ATTACHER/exception-1.5.4-sources-1513819725063.jar"/>
 	<classpathentry kind="var" path="M2_REPO/com/networknt/client/1.5.4/client-1.5.4.jar"/>
 	<classpathentry kind="var" path="M2_REPO/org/apache/commons/commons-lang3/3.6/commons-lang3-3.6.jar"/>
 	<classpathentry kind="var" path="M2_REPO/commons-io/commons-io/2.5/commons-io-2.5.jar"/>
@@ -35,7 +35,7 @@
 	<classpathentry kind="var" path="M2_REPO/com/networknt/body/1.5.4/body-1.5.4.jar"/>
 	<classpathentry kind="var" path="M2_REPO/com/networknt/mask/1.5.4/mask-1.5.4.jar"/>
 	<classpathentry kind="var" path="M2_REPO/com/networknt/metrics/1.5.4/metrics-1.5.4.jar"/>
-	<classpathentry kind="var" path="M2_REPO/com/networknt/server/1.5.4/server-1.5.4.jar"/>
+	<classpathentry kind="var" path="M2_REPO/com/networknt/server/1.5.4/server-1.5.4.jar" sourcepath="SOURCE_ATTACHER/server-1.5.4-sources.jar"/>
 	<classpathentry kind="var" path="M2_REPO/com/networknt/registry/1.5.4/registry-1.5.4.jar"/>
 	<classpathentry kind="var" path="M2_REPO/com/networknt/switcher/1.5.4/switcher-1.5.4.jar"/>
 	<classpathentry kind="var" path="M2_REPO/com/networknt/consul/1.5.4/consul-1.5.4.jar"/>
@@ -53,7 +53,7 @@
 	<classpathentry kind="var" path="M2_REPO/com/fasterxml/jackson/dataformat/jackson-dataformat-yaml/2.9.1/jackson-dataformat-yaml-2.9.1.jar"/>
 	<classpathentry kind="var" path="M2_REPO/com/networknt/openapi-meta/1.5.4/openapi-meta-1.5.4.jar"/>
 	<classpathentry kind="var" path="M2_REPO/com/networknt/openapi-security/1.5.4/openapi-security-1.5.4.jar"/>
-	<classpathentry kind="var" path="M2_REPO/com/networknt/openapi-validator/1.5.4/openapi-validator-1.5.4.jar"/>
+	<classpathentry kind="var" path="M2_REPO/com/networknt/openapi-validator/1.5.4/openapi-validator-1.5.4.jar" sourcepath="SOURCE_ATTACHER/openapi-validator-1.5.4-sources.jar"/>
 	<classpathentry kind="var" path="M2_REPO/ch/qos/logback/logback-classic/1.2.3/logback-classic-1.2.3.jar"/>
 	<classpathentry kind="var" path="M2_REPO/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar"/>
 	<classpathentry kind="var" path="M2_REPO/org/apache/commons/commons-text/1.1/commons-text-1.1.jar"/>
