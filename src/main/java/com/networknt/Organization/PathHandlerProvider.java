@@ -1,15 +1,19 @@
 
 package com.networknt.Organization;
 
-import com.networknt.config.Config;
+import com.networknt.Organization.handler.LicensesGetHandler;
+import com.networknt.Organization.handler.OrganizationDeleteByIdHandler;
+import com.networknt.Organization.handler.OrganizationGetByIdHandler;
+import com.networknt.Organization.handler.OrganizationPutByIdHandler;
+import com.networknt.Organization.handler.OrganizationsGetHandler;
+import com.networknt.Organization.handler.OrganizationsPostHandler;
+import com.networknt.health.HealthGetHandler;
+import com.networknt.info.ServerInfoGetHandler;
 import com.networknt.server.HandlerProvider;
+
 import io.undertow.Handlers;
 import io.undertow.server.HttpHandler;
-import io.undertow.server.HttpServerExchange;
 import io.undertow.util.Methods;
-import com.networknt.info.ServerInfoGetHandler;
-import com.networknt.health.HealthGetHandler;
-import com.networknt.Organization.handler.*;
 
 public class PathHandlerProvider implements HandlerProvider {
     @Override
@@ -30,7 +34,7 @@ public class PathHandlerProvider implements HandlerProvider {
         
             .add(Methods.PUT, "/v1/organizations/{id}", new OrganizationPutByIdHandler())
             
-            .add(Methods.PUT, "/v1/licenses", new LicensesGetHandler())
+            .add(Methods.GET, "/v1/licenses", new LicensesGetHandler())
         
         ;
     }

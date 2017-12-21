@@ -12,6 +12,7 @@ import org.slf4j.LoggerFactory;
 import org.xnio.OptionMap;
 
 import com.fasterxml.jackson.core.type.TypeReference;
+import com.networknt.body.BodyHandler;
 import com.networknt.client.Http2Client;
 import com.networknt.cluster.Cluster;
 import com.networknt.config.Config;
@@ -25,6 +26,7 @@ import io.undertow.client.ClientRequest;
 import io.undertow.client.ClientResponse;
 import io.undertow.server.HttpHandler;
 import io.undertow.server.HttpServerExchange;
+import io.undertow.util.HttpString;
 import io.undertow.util.Methods;
 import com.networknt.server.Server;
 
@@ -44,7 +46,7 @@ public class LicensesGetHandler implements HttpHandler {
 
 	public LicensesGetHandler() {
 		try {
-			apilicensesHost = cluster.serviceToUrl("http", "License_services-1.0.0", tag, null);
+			apilicensesHost = cluster.serviceToUrl("https", "License_services-1.0.0", tag, null);
 			connectionlicenses = client.connect(new URI(apilicensesHost), Http2Client.WORKER, Http2Client.SSL,
 					Http2Client.POOL, OptionMap.create(UndertowOptions.ENABLE_HTTP2, true)).get();
 		} catch (Exception e) {
@@ -64,33 +66,29 @@ public class LicensesGetHandler implements HttpHandler {
 				throw new ClientException(e);
 			}
 		}
-		final CountDownLatch latch = new CountDownLatch(2);
+		final CountDownLatch latch = new CountDownLatch(1);
         final AtomicReference<ClientResponse> referencelicenses = new AtomicReference<>();
      
         try {
             ClientRequest requestlicenses = new ClientRequest().setMethod(Methods.GET).setPath(apilicensesPath);
             if(securityEnabled) client.propagateHeaders(requestlicenses, exchange);
             connectionlicenses.sendRequest(requestlicenses, client.createClientCallback(referencelicenses, latch));
-
-           
-
             latch.await();
-
             int statusCodelicenses = referencelicenses.get().getResponseCode();
             if(statusCodelicenses >= 300){
                 throw new Exception("Failed to call API B: " + statusCodelicenses);
             }
-            List<String> apibList = Config.getInstance().getMapper().readValue(referencelicenses.get().getAttachment(Http2Client.RESPONSE_BODY),
-                    new TypeReference<List<String>>(){});
-            list.addAll(apibList);
+     
+           System.out.println();
+          /*  System.out.println(apibList);
+            list.addAll(apibList);*/
 
           
         } catch (Exception e) {
             logger.error("Exception:", e);
             throw new ClientException(e);
         }
-        System.out.println(list);
-        exchange.getResponseSender().send(Config.getInstance().getMapper().writeValueAsString(list));
+        exchange.getResponseSender().send(Config.getInstance().getMapper().writeValueAsString(referencelicenses.get().getAttachment(Http2Client.RESPONSE_BODY)));
     
 
 	}

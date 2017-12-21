@@ -1,5 +1,52 @@
 {"components":{"securitySchemes":{"licensestore_auth":{"type": "oauth2","description": "This API uses OAuth 2 with the client credential grant flow.","flows":{"clientCredentials":{"tokenUrl": "https://localhost:6882/token","scopes":{"read:licenses": "read your licenses","server.info.r":"read server info","write:licenses": "modify licenses in your account"}}}}},"schemas":{"Error":{"required":["code",
-          "message"],"properties":{"message":{"type": "string"},"code":{"type": "integer","format": "int32"}}},"organization":{"required":["id",
+          "message"],"properties":{"message":{"type": "string"},"code":{"type": "integer","format": "int32"}}},"license": {
+				"required": [
+					"licenseId",
+					"organizationId",
+					"productName",
+					"license_type",
+					"license_max",
+					"license_allocated",
+					"comment"
+				],
+				"properties": {
+					"organizationId": {
+						"type": "string"
+					},
+					"organizationName": {
+						"type": "string"
+					},
+					"contactEmail": {
+						"type": "string"
+					},
+					"contactName": {
+						"type": "string"
+					},
+					"license_type": {
+						"type": "string"
+					},
+					"license_max": {
+						"type": "integer",
+						"format": "int32"
+					},
+					"comment": {
+						"type": "string"
+					},
+					"licenseId": {
+						"type": "string"
+					},
+					"contactPhone": {
+						"type": "string"
+					},
+					"productName": {
+						"type": "string"
+					},
+					"license_allocated": {
+						"type": "integer",
+						"format": "int32"
+					}
+				}
+			},"organization":{"required":["id",
           "name",
           "contactName",
           "contactEmail",
@@ -244,7 +291,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/organization"
+                  "$ref": "#/components/schemas/license"
                 }
               }
             }
@@ -262,7 +309,20 @@
         }
       }
     },"/health":{"get":{"responses":{"200":{"description":"successful operation"}},"parameters":[]}}
-    ,"/licenses":{"get":{"responses":{"200":{"description":"successful operation"}},"parameters":[]}}
+    ,"/licenses":{"get":{"description": "Return an array of strings collected from down stream APIs","operationId": "listData","responses":{"200":{"schema": {
+                            "title": "ArrayOfStrings",
+                            "type": "array",
+                            "items": {
+                               "$ref": "#/components/schemas/organization"
+                            }
+                        },"examples":{"application/json": ["Message 1"]},"description": "Successful response"}},"security": [
+                    {
+                        "a_auth": [
+                            "api_a.w",
+                            "api_a.r"
+                        ]
+                    }
+                ]}}
     ,"/server/info":{"get":{"security":[{"licensestore_auth":["server.info.r"]}],"responses":{"200":{"description":"successful operation"}},"parameters":[]}}},"info": {
     "version": "1.0.0",
     "title": "Swagger OrganizationService",
