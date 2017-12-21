@@ -3,12 +3,12 @@
 singletons:
 - com.networknt.registry.URL:
   - com.networknt.registry.URLImpl:
-      protocol: http
+      protocol: https
       host: localhost
-      port: 8083
+      port: 8080
       path: direct
       parameters:
-        License_services-1.0.0: http://localhost:8080
+        License_services-1.0.0: https://localhost:7441
 - com.networknt.registry.Registry:
   - com.networknt.registry.support.DirectRegistry
 - com.networknt.balance.LoadBalance:
